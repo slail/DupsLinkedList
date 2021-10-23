@@ -14,4 +14,11 @@ def removeDuplicatesFromLinkedList(linkedList):
     node has an integer value as well as a next node pointing to the next node in the list or to None / null if it's
     the tail of the list.
     """
-    return None
+    current_node = linkedList
+    while current_node is not None:
+        next_distinct_node = current_node.next
+        while next_distinct_node is not None and next_distinct_node.value == current_node.value:
+            next_distinct_node = next_distinct_node.next
+        current_node.next = next_distinct_node
+        current_node = next_distinct_node
+    return linkedList
